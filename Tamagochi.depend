@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1448546994 source:/home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/main.cpp
+	<iostream>
+	"include/creature.h"
+
+1448546364 /home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/include/creature.h
+	<string>
+

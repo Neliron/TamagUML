@@ -1,4 +1,7 @@
+#include <iostream>
 #include "../include/creature.h"
+
+using namespace std;
 
 Creature::Creature()
 {
@@ -11,6 +14,8 @@ Creature::Creature()
     morale = 100;
     focus = 100;
     status = 0;
+
+    cout << name;
 }
 
 Creature::~Creature()
