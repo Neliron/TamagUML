@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include <string>
+#include <fstream>
+#include <iostream>
 #include "creature.h"
 #include "environment.h"
 
@@ -12,16 +14,19 @@ class Game
         Creature C;
         Environment E;
 
+    public:
         Game();
         ~Game();
         Game(string, Type);
         int timeLapsed();
-        int totalTimeLapsed();
-        int increaseHungerValue();
-        int increaseMoralValue();
-        int increaseFocusValue();
+        void increaseHungerValue(int);
+        void increaseMoraleValue(int);
+        void increaseFocusValue(int);
         void updateStatus();
         bool checkState();
+        void displayGame();
+        void saveGame();
+        void loadGame();
 };
 
 #endif // GAME_H

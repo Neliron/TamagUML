@@ -19,6 +19,8 @@ class Creature
         int morale;
         int focus;
         int status;
+        int totalTimeLapsed;
+        string displayerStatus;
 
     public:
         Creature();
@@ -33,7 +35,9 @@ class Creature
         int getHunger();
         int getMorale();
         int getFocus();
-        int getStatus();
+        string getStatus();
+        int getTotalTimeLapsed();
+        void newDisplayerStatus();
 };
 
 
