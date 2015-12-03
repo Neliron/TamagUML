@@ -1,8 +1,23 @@
 # depslib dependency file v1.0
-1448546994 source:/home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/main.cpp
+1449149825 source:/home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/main.cpp
 	<iostream>
 	"include/creature.h"
+	"include/environment.h"
 
-1448546364 /home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/include/creature.h
+1448549865 /home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/include/creature.h
 	<string>
+
+1448549350 source:/home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/src/creature.cpp
+	<iostream>
+	"../include/creature.h"
+
+1449130078 source:/home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/src/environment.cpp
+	<iostream>
+	"../include/environment.h"
+
+1448549865 /home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/include/environment.h
+	<string>
+	"creature.h"
+
+1448549865 source:/home/etudiants/inf/uapv1402630/Bureau/Projet/TamagUML/src/game.cpp
 

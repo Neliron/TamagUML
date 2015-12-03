@@ -13,22 +13,27 @@ struct Type
 class Creature
 {
     private:
-
-    string name;
-    Type race;
-    int hunger;
-    int morale;
-    int focus;
-    int status;
+        string name;
+        Type race;
+        int hunger;
+        int morale;
+        int focus;
+        int status;
 
     public:
         Creature();
         ~Creature();
-        Creature(string, Type);
+        Creature(string, int);
         void setHunger(int);
         void setMorale(int);
         void setFocus(int);
         void setStatus(int);
+        Type getRace();
+        string getName();
+        int getHunger();
+        int getMorale();
+        int getFocus();
+        int getStatus();
 };
 
 

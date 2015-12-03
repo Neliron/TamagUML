@@ -36,7 +36,13 @@
 			<Add option="`sdl-config --libs`" />
 		</Linker>
 		<Unit filename="cb.bmp" />
+		<Unit filename="include/creature.h" />
+		<Unit filename="include/environment.h" />
+		<Unit filename="include/game.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/creature.cpp" />
+		<Unit filename="src/environment.cpp" />
+		<Unit filename="src/game.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
