@@ -18,47 +18,47 @@ public class Engine{
 	
 	public Engine(){
 
-	    tamagochi.setTitle("Test");
-	    tamagochi.setSize(800, 640);
-	    tamagochi.setLocationRelativeTo(null);
-	    tamagochi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    tamagochi.setResizable(false);
+	    this.tamagochi.setTitle("Test");
+	    this.tamagochi.setSize(800, 640);
+	    this.tamagochi.setLocationRelativeTo(null);
+	    this.tamagochi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    this.tamagochi.setResizable(false);
 	    
-	    feed.setBounds(640, 520, 150, 30);
-	    raiseMorale.setBounds(640, 560, 150, 30);
-	    pray.setBounds(640, 600, 150, 30);
+	    this.feed.setBounds(640, 520, 150, 30);
+	    this.raiseMorale.setBounds(640, 560, 150, 30);
+	    this.pray.setBounds(640, 600, 150, 30);
 	    
 	    
-	    feed.addActionListener(new ActionListener(){
+	    this.feed.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Test !");
 			}
 	    });
 	    
-	    raiseMorale.addActionListener(new ActionListener(){
+	    this.raiseMorale.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Test 2 !");
 			}
 	    });
 	    
-	    pray.addActionListener(new ActionListener(){
+	    this.pray.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Test 3 !");
 			}
 	    });
 	    
-	    panel.setLayout(null);
+	    this.panel.setLayout(null);
 	    
-	    panel.add(feed);
-	    panel.add(raiseMorale);
-	    panel.add(pray);
+	    this.panel.add(this.feed);
+	    this.panel.add(this.raiseMorale);
+	    this.panel.add(this.pray);
 	    
-	    tamagochi.setContentPane(panel);
+	    this.tamagochi.setContentPane(this.panel);
 	    
-	    tamagochi.setVisible(true);
+	    this.tamagochi.setVisible(true);
 	}
 	
 	public void update(){
