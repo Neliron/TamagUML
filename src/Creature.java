@@ -8,98 +8,98 @@ public class Creature {
     private int focus;
     private int status;
     
-    Creature()
+    public Creature()
     {
-        name = "Lucifron";
+        this.name = "Lucifron";
 
-        race.id = 1;
-        race.raceName = "Demon";
+        this.race.id = 1;
+        this.race.raceName = "Demon";
         //displayerStatus = "Happy";
 
-        hunger = 100;
-        morale = 100;
-        focus = 100;
-        status = 0;
+        this.hunger = 100;
+        this.morale = 100;
+        this.focus = 100;
+        this.status = 0;
         
         //totalTimeLapsed = 0;
     }
     
-    Creature(String choosedName, int choosedRace)
+   public Creature(String choosedName, int choosedRace)
     {
-        name = choosedName;
+    	this.name = choosedName;
         if (choosedRace == 1)
         {
-            race.raceName = "Demon";
+        	this.race.raceName = "Demon";
             //displayerStatus = "Happy";
         }
 
         if (choosedRace == 2)
         {
-            race.raceName = "Banshee";
+        	this.race.raceName = "Banshee";
             //displayerStatus = "Calm";
         }
-        race.id = choosedRace;
+        this.race.id = choosedRace;
 
-        hunger = 100;
-        morale = 100;
-        focus = 100;
-        status = 0;
+        this.hunger = 100;
+        this.morale = 100;
+        this.focus = 100;
+        this.status = 0;
         
         //totalTimeLapsed = 0;
     }
     
-	void setHunger(int newHunger)
+	public void setHunger(int newHunger)
 	{
-		hunger = hunger + newHunger;
-	    if (hunger > 100) hunger = 100;
-	    if (hunger < 0) hunger = 0;
+		this.hunger = this.hunger + newHunger;
+	    if (this.hunger > 100) this.hunger = 100;
+	    if (this.hunger < 0) this.hunger = 0;
 	}
 	
-	void setMorale(int newMorale)
+	public void setMorale(int newMorale)
 	{
-		morale = morale + newMorale;
-	    if (morale > 100) morale = 100;
-	    if (morale < 0) morale = 0;
+		this.morale = this.morale + newMorale;
+	    if (this.morale > 100) this.morale = 100;
+	    if (this.morale < 0) this.morale = 0;
 	}
 	
-	void setFocus(int newFocus)
+	public void setFocus(int newFocus)
 	{
-		focus = focus + newFocus;
-	    if (focus > 100) focus = 100;
-	    if (focus < 0) focus = 0;
+		this.focus = this.focus + newFocus;
+	    if (this.focus > 100) this.focus = 100;
+	    if (this.focus < 0) this.focus = 0;
 	}
 	
-	void setStatus(int newStatus)
+	public void setStatus(int newStatus)
 	{
-	    status = newStatus;
+		this.status = newStatus;
 	}
 	
-	Type getRace()
+	public Type getRace()
 	{
 	    return this.race;
 	}
 	
-	String getName()
+	public String getName()
 	{
 	    return this.name;
 	}
 	
-	int getHunger()
+	public int getHunger()
 	{
 	    return this.hunger;
 	}
 	
-	int getMorale()
+	public int getMorale()
 	{
 	    return this.morale;
 	}
 	
-	int getFocus()
+	public int getFocus()
 	{
 	    return this.focus;
 	}
 	
-	int getStatus()
+	public int getStatus()
 	{
 	    return this.status;
 	}

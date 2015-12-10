@@ -61,27 +61,27 @@ public class Environment {
 	
 	}
 	
-	String getName()
+	public String getName()
 	{
 	    return this.name;
 	}
 
-	int getSector()
+	public int getSector()
 	{
 	    return this.sector;
 	}
 
-	int getDecreaseHunger()
+	public int getDecreaseHunger()
 	{
 	    return this.decreaseHunger;
 	}
 
-	int getDecreaseMorale()
+	public int getDecreaseMorale()
 	{
 	    return this.decreaseMorale;
 	}
 
-	int getDecreaseFocus()
+	public int getDecreaseFocus()
 	{
 	    return this.decreaseFocus;
 	}

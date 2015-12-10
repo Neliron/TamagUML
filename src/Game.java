@@ -7,26 +7,27 @@ public class Game {
     
     public Game()
     {
-        C = new Creature("Lucifron", 1);
-        E = new Environment(1);
+        this.C = new Creature("Lucifron", 1);
+        this.E = new Environment(1);
     }
 
     public Game(String Name, Type race)
     {
-        C = new Creature(Name, race.id);
-        E = new Environment(race.id);
+    	this.C = new Creature(Name, race.id);
+    	this.E = new Environment(race.id);
     }
     
     public boolean checkState()
     {
-        int lethalLimit = 0;
+       
+        if (this.C.getHunger() <= 0) 
+        	return false;
+        if (this.C.getMorale() <= 0) 
+        	return false;
+        if (this.C.getFocus() <= 0) 
+        	return false;
 
-        if (C.getHunger() <= 0) {lethalLimit++;}
-        if (C.getMorale() <= 0) {lethalLimit++;}
-        if (C.getFocus() <= 0) {lethalLimit++;}
-
-        if (lethalLimit >= 1) return false;
-        else return true;
+        return true;
     }
 
     public void updateStatus()
@@ -34,27 +35,32 @@ public class Game {
         int newStatus = 0;
         int veryBadLimit = 0;
 
-        if (C.getHunger() < 25) {newStatus = 1; veryBadLimit++;}
-        if (C.getMorale() < 25) {newStatus = 2; veryBadLimit++;}
-        if (C.getFocus() < 25) {newStatus = 3; veryBadLimit++;}
-        if (veryBadLimit >= 2) newStatus = 4;
+        if (this.C.getHunger() < 25) {
+        	newStatus = 1;
+        	veryBadLimit++;
+        }
+        if (this.C.getMorale() < 25) {
+        	newStatus = 2; 
+        	veryBadLimit++;
+        }
+        if (this.C.getFocus() < 25) {
+        	newStatus = 3;
+        	veryBadLimit++;
+        }
+        if (veryBadLimit > 1) 
+        	newStatus = 4;
 
-        C.setStatus(newStatus);
+        this.C.setStatus(newStatus);
     }
     
     public void displayGame() // C'est la base du display. A remplacer au fur et à mesure...
     {
-        System.out.println("You're "+C.getName()+" and you're now roaming at "+E.getName()+".");
-        System.out.println("Hunger : "+C.getHunger()+".");
-        System.out.println("Morale : "+C.getHunger()+".");
-        System.out.println("Focus : "+C.getHunger()+".");
-        System.out.println("Status : "+C.getHunger()+".");
+        System.out.println("You're " + this.C.getName() + " and you're now roaming at " + this.E.getName() + ".");
+        System.out.println("Hunger : " + this.C.getHunger() + ".");
+        System.out.println("Morale : " + this.C.getHunger() + ".");
+        System.out.println("Focus : " + this.C.getHunger() + ".");
+        System.out.println("Status : " + this.C.getHunger() + ".");
     }
-    
-    // Behold, wanderer. For that you are about to enter into the hell.
-    // This is C++ code.
-    // This is save and load code.
-    // Welcome to the hell.
     
     /* void Game::saveGame() // On enregistre le plus important
     {
