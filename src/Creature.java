@@ -7,8 +7,6 @@ public class Creature {
     private int morale;
     private int focus;
     private int status;
-    private int totalTimeLapsed;
-    private String displayerStatus;
     
     Creature()
     {
@@ -16,14 +14,14 @@ public class Creature {
 
         race.id = 1;
         race.raceName = "Demon";
-        displayerStatus = "Happy";
+        //displayerStatus = "Happy";
 
         hunger = 100;
         morale = 100;
         focus = 100;
         status = 0;
         
-        totalTimeLapsed = 0;
+        //totalTimeLapsed = 0;
     }
     
     Creature(String choosedName, int choosedRace)
@@ -32,13 +30,13 @@ public class Creature {
         if (choosedRace == 1)
         {
             race.raceName = "Demon";
-            displayerStatus = "Happy";
+            //displayerStatus = "Happy";
         }
 
         if (choosedRace == 2)
         {
             race.raceName = "Banshee";
-            displayerStatus = "Calm";
+            //displayerStatus = "Calm";
         }
         race.id = choosedRace;
 
@@ -47,7 +45,7 @@ public class Creature {
         focus = 100;
         status = 0;
         
-        totalTimeLapsed = 0;
+        //totalTimeLapsed = 0;
     }
     
 	void setHunger(int newHunger)
@@ -106,7 +104,7 @@ public class Creature {
 	    return this.status;
 	}
     
-	void newDisplayerStatus() // Le nom du statut actuel selon la race
+	/*void newDisplayerStatus() // Le nom du statut actuel selon la race
 	{
 	    if (race.id == 1)
 	        {
@@ -125,6 +123,6 @@ public class Creature {
 	            if (status == 3) displayerStatus = "Wrathful";
 	            if (status == 4) displayerStatus = "Desperate";
 	        }
-	}
+	}*/
     
 }

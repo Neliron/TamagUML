@@ -3,6 +3,7 @@ public class Game {
 	
 	private Creature C;
     private Environment E;
+    //private int totalTimeLapsed;
     
     public Game()
     {
