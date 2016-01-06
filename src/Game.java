@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,10 +43,26 @@ public class Game {
     	this.environment = new Environment(raceId);
     }
     
+
+	public Creature getCreature() {
+		return creature;
+	}
+
+	public void setCreature(Creature creature) {
+		this.creature = creature;
+	}
+
+	public Environment getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(Environment environment) {
+		this.environment = environment;
+	}
+	
     /** */
     public boolean checkState()
     {
-       
         if (this.creature.getHunger() <= 0) 
         	return false;
         if (this.creature.getMorale() <= 0) 
@@ -106,11 +122,36 @@ public class Game {
 		loop.start();
     	return;
     }
+    
     /** */
-    public void saveGame()
+    public void saveGame(String name)
     {
-    	Date aujourdhui = new Date();
-		System.out.println(aujourdhui);
+    	Date today = new Date();
+    	SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    	String todayString = formater.format(today);
+    	
+    	try {
+			FileWriter fw = new FileWriter (name);
+			BufferedWriter bw = new BufferedWriter (fw);
+			PrintWriter saveFile = new PrintWriter (bw); 
+			
+			saveFile.println(creature.getName());
+			saveFile.println(creature.getHunger());
+			saveFile.println(creature.getMorale());
+			saveFile.println(creature.getFocus());
+			saveFile.println(creature.getRaceId());
+			saveFile.println(creature.getStatus());
+			
+			saveFile.println(environment.getSector());
+			
+			saveFile.println(todayString);
+			
+			saveFile.close();	
+		}
+		catch (Exception e){
+			System.out.println(e.toString());
+		}	
+		
     	return;
     }
     /** */
@@ -126,6 +167,15 @@ public class Game {
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
 			
+			creature.setName(br.readLine());
+			creature.setHunger(Integer.parseInt(br.readLine()));
+			creature.setMorale(Integer.parseInt(br.readLine()));
+			creature.setFocus(Integer.parseInt(br.readLine()));
+			creature.setRaceId(Integer.parseInt(br.readLine()));
+			creature.setStatus(Integer.parseInt(br.readLine()));
+			
+			environment = new Environment(Integer.parseInt(br.readLine()));
+			
 			loadDate = br.readLine();
 	    	try {
 	    		
@@ -139,24 +189,15 @@ public class Game {
 	    	} catch (ParseException e) {
 	    		e.printStackTrace();
 	    	}
-			
-			creature.setName(br.readLine());
-			creature.setHunger(Integer.parseInt(br.readLine()));
-			creature.setMorale(Integer.parseInt(br.readLine()));
-			creature.setFocus(Integer.parseInt(br.readLine()));
-			creature.setRaceId(Integer.parseInt(br.readLine()));
-			creature.setStatus(Integer.parseInt(br.readLine()));
-			
-			environment = new Environment(Integer.parseInt(br.readLine()));
-			
+
 			br.close(); 
 		}		
 		catch (Exception e){
 			System.out.println(e.toString());
 		}
     	return;
-    	
     }
+
     
     
     /* void Game::saveGame() // On enregistre le plus important
@@ -176,24 +217,6 @@ public class Game {
             }
             else cerr << "We can't open this file... Sawy." << endl; // Mogor !
     }
-
-    void Game::loadGame() // Pour l'instant ça ne charge que le temps.
-    {
-        ifstream file("save.txt", ios::in);
-
-            if(file) {
-                int timing;
-                file >> timing; // On récupère le temps dans le fichier (il est en première ligne)
-
-                int actualTime = time(NULL); // On récupère l'heure actuelle
-                actualTime = actualTime - timing; // On compare les deux...
-                cout << actualTime; // On a donc le temps écoulé depuis la sauvegarde !
-
-                file.close();
-            }
-            else cerr << "We can't open this file... Sawy." << endl; // Mogor !
-    }
-
 
     // We'll need this later. C'est la base de l'interpréteur de commandes.
 

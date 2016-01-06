@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author TORO DAPP
+ *
+ */
 public class Creature {
 
 	private String name;
