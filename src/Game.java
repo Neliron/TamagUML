@@ -1,22 +1,32 @@
-
+/**
+ * 
+ * @author TORO DAPP
+ *
+ */
 public class Game {
-	
+	/**
+	 * 
+	 */
 	private Creature C;
+	/** */
     private Environment E;
     //private int totalTimeLapsed;
     
+    /**
+     * 
+     */
     public Game()
     {
         this.C = new Creature("Lucifron", 1);
         this.E = new Environment(1);
     }
-
-    public Game(String Name, Type race)
+    /** */
+    public Game(String Name, int raceId)
     {
-    	this.C = new Creature(Name, race.id);
-    	this.E = new Environment(race.id);
+    	this.C = new Creature(Name, raceId);
+    	this.E = new Environment(raceId);
     }
-    
+    /** */
     public boolean checkState()
     {
        
@@ -29,7 +39,7 @@ public class Game {
 
         return true;
     }
-
+    /** */
     public void updateStatus()
     {
         int newStatus = 0;
@@ -52,7 +62,7 @@ public class Game {
 
         this.C.setStatus(newStatus);
     }
-    
+    /** */
     public void displayGame() // C'est la base du display. A remplacer au fur et à mesure...
     {
         System.out.println("You're " + this.C.getName() + " and you're now roaming at " + this.E.getName() + ".");
@@ -60,6 +70,17 @@ public class Game {
         System.out.println("Morale : " + this.C.getHunger() + ".");
         System.out.println("Focus : " + this.C.getHunger() + ".");
         System.out.println("Status : " + this.C.getHunger() + ".");
+    }
+    /** */
+    public void saveGame()
+    {
+    	return;
+    }
+    /** */
+    public void loadGame()
+    {
+    	return;
+    	
     }
     
     /* void Game::saveGame() // On enregistre le plus important
@@ -84,8 +105,7 @@ public class Game {
     {
         ifstream file("save.txt", ios::in);
 
-            if(file)
-            {
+            if(file) {
                 int timing;
                 file >> timing; // On récupère le temps dans le fichier (il est en première ligne)
 
