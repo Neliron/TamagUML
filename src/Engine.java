@@ -1,8 +1,11 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -11,6 +14,7 @@ public class Engine{
 	private JButton feed;
 	private JButton raiseMorale;
 	private JButton pray;
+	private JLabel img;
 	
 	private JFrame tamagochi = new JFrame();
 	
@@ -31,7 +35,8 @@ public class Engine{
 			pray = new JButton("Haunt crypt");
 		}
 		
-		
+		this.img = new JLabel(new ImageIcon("res/demon.png"));
+		this.img.setBounds(0, 0, 200, 200);
 		
 	    this.tamagochi.setTitle("Test");
 	    this.tamagochi.setSize(800, 640);
@@ -64,9 +69,9 @@ public class Engine{
 				pet.modifyFocus(20);
 			}
 	    });
-	    
 	    this.panel.setLayout(null);
 	    
+	    this.panel.add(this.img);
 	    this.panel.add(this.feed);
 	    this.panel.add(this.raiseMorale);
 	    this.panel.add(this.pray);
