@@ -1,3 +1,14 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 
  * @author TORO DAPP
@@ -7,9 +18,11 @@ public class Game {
 	/**
 	 * 
 	 */
-	private Creature C;
+	private Creature creature;
 	/** */
-    private Environment E;
+    private Environment environment;
+    /** */
+    private Engine engine;
     //private int totalTimeLapsed;
     
     /**
@@ -17,71 +30,134 @@ public class Game {
      */
     public Game()
     {
-        this.C = new Creature("Lucifron", 1);
-        this.E = new Environment(1);
+        this.creature = new Creature("Lucifron", 1);
+        this.environment = new Environment(1);
     }
-    /** */
+    
+    /**
+     * 
+     */
     public Game(String Name, int raceId)
     {
-    	this.C = new Creature(Name, raceId);
-    	this.E = new Environment(raceId);
+    	this.creature = new Creature(Name, raceId);
+    	this.environment = new Environment(raceId);
     }
+    
     /** */
     public boolean checkState()
     {
        
-        if (this.C.getHunger() <= 0) 
+        if (this.creature.getHunger() <= 0) 
         	return false;
-        if (this.C.getMorale() <= 0) 
+        if (this.creature.getMorale() <= 0) 
         	return false;
-        if (this.C.getFocus() <= 0) 
+        if (this.creature.getFocus() <= 0) 
         	return false;
 
         return true;
     }
-    /** */
+    
+    /** 
+     * 
+     */
     public void updateStatus()
     {
         int newStatus = 0;
         int veryBadLimit = 0;
 
-        if (this.C.getHunger() < 25) {
+        if (this.creature.getHunger() < 25) {
         	newStatus = 1;
         	veryBadLimit++;
         }
-        if (this.C.getMorale() < 25) {
+        if (this.creature.getMorale() < 25) {
         	newStatus = 2; 
         	veryBadLimit++;
         }
-        if (this.C.getFocus() < 25) {
+        if (this.creature.getFocus() < 25) {
         	newStatus = 3;
         	veryBadLimit++;
         }
         if (veryBadLimit > 1) 
         	newStatus = 4;
 
-        this.C.setStatus(newStatus);
+        this.creature.setStatus(newStatus);
     }
-    /** */
-    public void displayGame() // C'est la base du display. A remplacer au fur et à mesure...
+    
+    /** 
+     * Boucle qui décrémente les attributs d'une créature toute les secondes.  
+     */
+    public void gameLoop()
     {
-        System.out.println("You're " + this.C.getName() + " and you're now roaming at " + this.E.getName() + ".");
-        System.out.println("Hunger : " + this.C.getHunger() + ".");
-        System.out.println("Morale : " + this.C.getHunger() + ".");
-        System.out.println("Focus : " + this.C.getHunger() + ".");
-        System.out.println("Status : " + this.C.getHunger() + ".");
+    	Thread loop = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				while(!false) {
+					creature.modifyHunger(-environment.getDecreaseHunger());
+					creature.modifyMorale(-environment.getDecreaseMorale());
+					creature.modifyFocus(-environment.getDecreaseFocus());
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		loop.start();
+    	return;
     }
     /** */
     public void saveGame()
     {
+    	Date aujourdhui = new Date();
+		System.out.println(aujourdhui);
     	return;
     }
     /** */
-    public void loadGame()
+    public void loadGame(String name)
     {
+    	creature = new Creature();
+    	Date today = new Date();
+    	String loadDate ;
+    	SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    	
+    	try{
+			InputStream ips=new FileInputStream(name); 
+			InputStreamReader ipsr=new InputStreamReader(ips);
+			BufferedReader br=new BufferedReader(ipsr);
+			
+			loadDate = br.readLine();
+	    	try {
+	    		
+	    		Date date = formater.parse(loadDate);
+	    		
+	    		if (date.compareTo(today) == -1) {
+	        		System.out.println("OK"); // Traitement sur les effets du temps.
+	        	} else {
+	        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
+	        	}
+	    	} catch (ParseException e) {
+	    		e.printStackTrace();
+	    	}
+			
+			creature.setName(br.readLine());
+			creature.setHunger(Integer.parseInt(br.readLine()));
+			creature.setMorale(Integer.parseInt(br.readLine()));
+			creature.setFocus(Integer.parseInt(br.readLine()));
+			creature.setRaceId(Integer.parseInt(br.readLine()));
+			creature.setStatus(Integer.parseInt(br.readLine()));
+			
+			environment = new Environment(Integer.parseInt(br.readLine()));
+			
+			br.close(); 
+		}		
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
     	return;
     	
     }
+    
     
     /* void Game::saveGame() // On enregistre le plus important
     {

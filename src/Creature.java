@@ -57,9 +57,40 @@ public class Creature {
 	    if (this.focus < 0) this.focus = 0;
 	}
 	
+	public void setRaceId(int raceId)
+	{
+		this.raceId = raceId;
+		return;
+	}
+	
 	public void setStatus(int newStatus)
 	{
 		this.status = newStatus;
+		return;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+		return;
+	}
+	
+	public void setHunger(int hunger)
+	{
+	    this.hunger = hunger;
+	    return;
+	}
+	
+	public void setMorale(int morale)
+	{
+		 this.morale = morale;
+		 return;
+	}
+	
+	public void setFocus(int focus)
+	{
+		 this.focus = focus;
+		 return;
 	}
 	
 	public int getRaceId()
