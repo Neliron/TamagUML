@@ -2,7 +2,7 @@
 public class Creature {
 
 	private String name;
-    private Type race;
+    public int raceId;
     private int hunger;
     private int morale;
     private int focus;
@@ -12,8 +12,7 @@ public class Creature {
     {
         this.name = "Lucifron";
 
-        this.race.id = 1;
-        this.race.raceName = "Demon";
+        this.raceId = 1;
         //displayerStatus = "Happy";
 
         this.hunger = 100;
@@ -27,18 +26,7 @@ public class Creature {
    public Creature(String choosedName, int choosedRace)
     {
     	this.name = choosedName;
-        if (choosedRace == 1)
-        {
-        	this.race.raceName = "Demon";
-            //displayerStatus = "Happy";
-        }
-
-        if (choosedRace == 2)
-        {
-        	this.race.raceName = "Banshee";
-            //displayerStatus = "Calm";
-        }
-        this.race.id = choosedRace;
+        this.raceId = choosedRace;
 
         this.hunger = 100;
         this.morale = 100;
@@ -48,21 +36,21 @@ public class Creature {
         //totalTimeLapsed = 0;
     }
     
-	public void setHunger(int newHunger)
+	public void modifyHunger(int newHunger)
 	{
 		this.hunger = this.hunger + newHunger;
 	    if (this.hunger > 100) this.hunger = 100;
 	    if (this.hunger < 0) this.hunger = 0;
 	}
 	
-	public void setMorale(int newMorale)
+	public void modifyMorale(int newMorale)
 	{
 		this.morale = this.morale + newMorale;
 	    if (this.morale > 100) this.morale = 100;
 	    if (this.morale < 0) this.morale = 0;
 	}
 	
-	public void setFocus(int newFocus)
+	public void modifyFocus(int newFocus)
 	{
 		this.focus = this.focus + newFocus;
 	    if (this.focus > 100) this.focus = 100;
@@ -74,9 +62,9 @@ public class Creature {
 		this.status = newStatus;
 	}
 	
-	public Type getRace()
+	public int getRaceId()
 	{
-	    return this.race;
+	    return this.raceId;
 	}
 	
 	public String getName()

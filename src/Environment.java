@@ -22,6 +22,7 @@ public class Environment {
 	{
 	    switch (draftLand)
 	    {
+	    
 	    case 1 :
 	    	this.name = "Satan's Gardens"; // Pour les démons
 	    	this.sector = 1;
@@ -40,23 +41,6 @@ public class Environment {
 	    	this.decreaseFocus = 1;
 	        break;
 
-	    case 3 :
-	    	this.name = "Burning Grounds";
-	    	this.sector = 3;
-
-	    	this.decreaseHunger = 2;
-	    	this.decreaseMorale = 1;
-	    	this.decreaseFocus = 1;
-	        break;
-	        
-	    case 4 :
-	    	this.name = "Magma Mines";
-	    	this.sector = 4;
-
-	    	this.decreaseHunger = 2;
-	    	this.decreaseMorale = 2;
-	    	this.decreaseFocus = 2;
-	        break;
 	    }
 	
 	}

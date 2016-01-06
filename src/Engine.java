@@ -8,16 +8,31 @@ import javax.swing.JPanel;
 
 public class Engine{
 	
-	private JButton feed = new JButton("Feed");
-	private JButton raiseMorale = new JButton("Raise Morale");
-	private JButton pray = new JButton("Pray");
+	private JButton feed;
+	private JButton raiseMorale;
+	private JButton pray;
 	
 	private JFrame tamagochi = new JFrame();
 	
 	private JPanel panel = new JPanel();
 	
-	public Engine(){
-
+	private Creature pet;
+	
+	public Engine(Creature creature){
+		
+		this.pet = creature;
+		if(this.pet.getRaceId() == 1){
+			feed = new JButton("Hunt humans");
+			raiseMorale = new JButton("Fight Angels");
+			pray = new JButton("Worship Satan");
+		} else if(this.pet.getRaceId() == 2) {
+			feed = new JButton("Reap souls");
+			raiseMorale = new JButton("Posess human");
+			pray = new JButton("Haunt crypt");
+		}
+		
+		
+		
 	    this.tamagochi.setTitle("Test");
 	    this.tamagochi.setSize(800, 640);
 	    this.tamagochi.setLocationRelativeTo(null);
@@ -32,21 +47,21 @@ public class Engine{
 	    this.feed.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Test !");
+				pet.modifyHunger(20);
 			}
 	    });
 	    
 	    this.raiseMorale.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Test 2 !");
+				pet.modifyMorale(20);
 			}
 	    });
 	    
 	    this.pray.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Test 3 !");
+				pet.modifyFocus(20);
 			}
 	    });
 	    
