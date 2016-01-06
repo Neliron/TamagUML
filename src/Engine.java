@@ -13,18 +13,26 @@ import javax.swing.JPanel;
  *
  */
 public class Engine{
-	
+	/**	 */
 	private JButton feed;
+	/**	 */
 	private JButton raiseMorale;
+	/**	 */
 	private JButton pray;
+	/**	 */
 	private JLabel img;
-	
+	/**	 */
 	private JFrame tamagochi = new JFrame();
-	
+	/**	 */
 	private JPanel panel = new JPanel();
-	
+	/**	 */
 	private Creature pet;
 	
+	/**
+	 * 
+	 * @param creature
+	 * 
+	 */
 	public Engine(Creature creature){
 		
 		this.pet = creature;
@@ -84,6 +92,9 @@ public class Engine{
 	    this.tamagochi.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 */
 	public void update(){
 		
 	}

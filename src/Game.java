@@ -12,22 +12,20 @@ import java.util.Date;
 /**
  * 
  * @author TORO DAPP
+ * 
+ * 
  *
  */
 public class Game {
-	/**
-	 * 
-	 */
+	/** Le tamagochi du joueur */
 	private Creature creature;
-	/** */
+	/** L'environnement dans lequel évolue le tamagochi*/
     private Environment environment;
-    /** */
+    /** Le moteur graphique du jeu*/
     private Engine engine;
     //private int totalTimeLapsed;
     
-    /**
-     * 
-     */
+    /** Constructeur vide de game, initialise une partie vide remplie par loadGame() */
     public Game()
     {
         this.creature = new Creature("Lucifron", 1);
@@ -35,32 +33,65 @@ public class Game {
     }
     
     /**
+     * Second constructeur de Game, permet de lancer une nouvelle partie.
      * 
+     * @param name
+     * 		Le nom du tamagochi
+     * @param raceId
+     * 		Le type de tamagochi, démon ou spectre.
      */
-    public Game(String Name, int raceId)
+    public Game(String name, int raceId)
     {
-    	this.creature = new Creature(Name, raceId);
+    	this.creature = new Creature(name, raceId);
     	this.environment = new Environment(raceId);
     }
     
-
+    /**
+     * Renvoi le tamagochi correspondant à la partie en cours.
+     * 
+     * @return
+     * 		Un objet Creature qui correspond au tamagochi de la partie en cours. 
+     *  
+     */
 	public Creature getCreature() {
 		return creature;
 	}
-
+	
+	/**
+	 * Remplace la creature présente dans la partie en cours.
+	 * 
+	 * @param creature
+	 * 		La nouvelle creature de la partie.
+	 */
 	public void setCreature(Creature creature) {
 		this.creature = creature;
 	}
-
+	
+	/**
+	 * Renvoi l'environnement du tamagochi dans la partie en cours.
+	 * 
+	 * @return
+	 * 		Un objet Environment correspondant à la partie en cours.
+	 */
 	public Environment getEnvironment() {
 		return environment;
 	}
-
+	/**
+	 * Modifie l'environnement de la partie en cours.
+	 * 
+	 * @param environment
+	 * 		Le nouvel environnement de la partie en cours.
+	 */
 	public void setEnvironment(Environment environment) {
 		this.environment = environment;
 	}
 	
-    /** */
+    /** 
+     *	Vérifie l'état de la créature
+     *
+     *	@return
+     *		False si il est mort, true sinon. 
+     */
     public boolean checkState()
     {
         if (this.creature.getHunger() <= 0) 
@@ -74,7 +105,7 @@ public class Game {
     }
     
     /** 
-     * 
+     * Met à jour le status du tamagochi en fonction de ses caractéristiques vitales. 
      */
     public void updateStatus()
     {
@@ -123,7 +154,13 @@ public class Game {
     	return;
     }
     
-    /** */
+    /**
+     * Sauvegarde la partie en cours
+     * 
+     * @param name
+     * 		Le nom du fichier de sauvegarde.
+     *
+     */
     public void saveGame(String name)
     {
     	Date today = new Date();
@@ -154,7 +191,14 @@ public class Game {
 		
     	return;
     }
-    /** */
+    
+    /**
+     * Charge une partie sauvegardé pour la reprendre.
+     * 
+     * @param name
+     * 		Le nom du fichier de sauvegarde.
+     *
+     */
     public void loadGame(String name)
     {
     	creature = new Creature();
@@ -182,7 +226,7 @@ public class Game {
 	    		Date date = formater.parse(loadDate);
 	    		
 	    		if (date.compareTo(today) == -1) {
-	        		System.out.println("OK"); // Traitement sur les effets du temps.
+	        		System.out.println("OK"); // Traitement sur les effets du temps. Calendar fait le taff.
 	        	} else {
 	        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
 	        	}
@@ -195,32 +239,15 @@ public class Game {
 		catch (Exception e){
 			System.out.println(e.toString());
 		}
+    	
+    	// Initialiser l'engine , ici ? Ou ailleur ?
     	return;
     }
 
-    
-    
-    /* void Game::saveGame() // On enregistre le plus important
-    {
-        ofstream file("save.txt", ios::out | ios::trunc);
-            if(file)
-            {
-                file << time(NULL) << endl; // L'heure de la sauvegarde via la fonction time(NULL)
-                file << C.getName() << endl; // Le nom de la créature
-                file << E.getSector() << endl; // L'identifiant du secteur environnement
-                file << C.getHunger() << endl; // La faim
-                file << C.getMorale() << endl; // Le moral
-                file << C.getFocus() << endl; // Le focus
-                file << C.getTotalTimeLapsed() << endl; // Le temps total de jeu de la créature
-
-                file.close();
-            }
-            else cerr << "We can't open this file... Sawy." << endl; // Mogor !
-    }
 
     // We'll need this later. C'est la base de l'interpréteur de commandes.
 
-      
+      /*
             int retrievedCommand
 
             if (retrievedCommand ==) {increaseHungerValue(100);}

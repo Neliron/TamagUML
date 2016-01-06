@@ -4,14 +4,20 @@
  *
  */
 public class Environment {
-	
+	/**	 */
 	private String name;
+	/**	 */
 	private int sector;
-
+	/**	 */
 	private int decreaseHunger;
+	/**	 */
 	private int decreaseMorale;
+	/**	 */
 	private int decreaseFocus;
 	
+	/**
+	 * 
+	 */
 	public Environment()
 	{
 	    this.name = "Satan's Gardens";
@@ -22,6 +28,11 @@ public class Environment {
 	    this.decreaseFocus = 2;
 	}
 	
+	/**
+	 * 
+	 * @param draftLand
+	 * 
+	 */
 	public Environment(int draftLand) // Environnements actuels du jeu
 	{
 	    switch (draftLand)
@@ -49,26 +60,50 @@ public class Environment {
 	
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 
+	 */
 	public String getName()
 	{
 	    return this.name;
 	}
-
+	/**
+	 * 
+	 * @return
+	 * 
+	 */
 	public int getSector()
 	{
 	    return this.sector;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * 
+	 */
 	public int getDecreaseHunger()
 	{
 	    return this.decreaseHunger;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 * 
+	 */
 	public int getDecreaseMorale()
 	{
 	    return this.decreaseMorale;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * 
+	 */
 	public int getDecreaseFocus()
 	{
 	    return this.decreaseFocus;
