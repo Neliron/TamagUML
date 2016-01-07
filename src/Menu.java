@@ -18,7 +18,7 @@ public class Menu {
 	public Menu() {
 		
 		this.menuFrame.setTitle("Tamagotchi");
-	    this.menuFrame.setSize(200, 250);
+	    this.menuFrame.setSize(220, 220);
 	    this.menuFrame.setLocationRelativeTo(null);
 	    this.menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.menuFrame.setResizable(false);
@@ -27,9 +27,9 @@ public class Menu {
 	    this.loadButton = new JButton("Load saved game");
 	    this.exitButton = new JButton("Exit");
 	    
-	    this.newGameButton.setBounds(30, 30, 140, 30);
-	    this.loadButton.setBounds(30, 90, 140, 30);
-	    this.exitButton.setBounds(30, 150, 140, 30);
+	    this.newGameButton.setBounds(30, 30, 160, 30);
+	    this.loadButton.setBounds(30, 90, 160, 30);
+	    this.exitButton.setBounds(30, 150, 160, 30);
 	    
 	    this.menuPanel.setLayout(null);
 	    
@@ -52,7 +52,7 @@ public class Menu {
 		this.loadButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO add load menu
+				new LoadGameMenu();
 				menuFrame.dispose();
 			}
 	    });

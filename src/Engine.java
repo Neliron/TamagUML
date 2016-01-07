@@ -106,13 +106,13 @@ public class Engine {
 	    
 	    this.panel.setLayout(null);
 	    
-	    this.panel.add(this.img);
 	    this.panel.add(this.hungerText);
 	    this.panel.add(this.moraleText);
 	    this.panel.add(this.focusText);
 	    this.panel.add(this.feed);
 	    this.panel.add(this.raiseMorale);
 	    this.panel.add(this.pray);
+	    this.panel.add(this.img);
 	    
 	    this.tamagochi.setContentPane(this.panel);
 	    
