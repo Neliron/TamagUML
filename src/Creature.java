@@ -112,7 +112,7 @@ public class Creature {
 	 * Change le nom du tamagochi.
 	 * 
 	 * @param name
-	 * 		
+	 * 		Le nouveau nom du tamagochi
 	 */
 	public void setName(String name)
 	{
@@ -121,9 +121,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Change la valeur de hunger.
 	 * 
 	 * @param hunger
-	 * 
+	 * 		La nouvelle valeur de hunger
 	 */
 	public void setHunger(int hunger)
 	{
@@ -132,9 +133,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Change la valeur de morale.
 	 * 
 	 * @param morale
-	 * 
+	 * 		La nouvelle valeur de morale
 	 */
 	public void setMorale(int morale)
 	{
@@ -143,9 +145,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Change la valeur de focus.
 	 * 
 	 * @param focus
-	 * 
+	 * 		La nouvelle valeur de focus
 	 */
 	public void setFocus(int focus)
 	{
@@ -154,9 +157,10 @@ public class Creature {
 	}
 	
 	/**
+	 * 	Renvoie la valeur de raceId.
 	 * 
 	 * @return
-	 * 
+	 * 		Un int qui correspond à la valeur raceId du tamagochi
 	 */
 	public int getRaceId()
 	{
@@ -164,9 +168,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Renvoie le nom du tamagochi.
 	 * 
 	 * @return
-	 * 
+	 * 		un String qui correspond au nom du tamagochi
 	 */
 	public String getName()
 	{
@@ -174,9 +179,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Renvoie la valeur de hunger.
 	 * 
 	 * @return
-	 * 
+	 * 		Un int qui correspond à la valeur de hunger 
 	 */
 	public int getHunger()
 	{
@@ -184,9 +190,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Renvoie la valeur de morale.
 	 * 
 	 * @return
-	 * 
+	 * 		Un int qui correspond à la valeur de morale
 	 */
 	public int getMorale()
 	{
@@ -194,9 +201,10 @@ public class Creature {
 	}
 	
 	/**
+	 * Renvoie la valeur de focus.
 	 * 
 	 * @return
-	 * 
+	 * 		Un int qui correspond à la valeur de focus.
 	 */
 	public int getFocus()
 	{
@@ -204,34 +212,13 @@ public class Creature {
 	}
 	
 	/**
+	 * Renvoie la valeur de status
 	 * 
 	 * @return
-	 * 
+	 * 		Un int qui correspond à la valeur de status.
 	 */
 	public int getStatus()
 	{
 	    return this.status;
 	}
-    
-	/*void newDisplayerStatus() // Le nom du statut actuel selon la race
-	{
-	    if (race.id == 1)
-	        {
-	            if (status == 0) displayerStatus = "Happy";
-	            if (status == 1) displayerStatus = "Hungry";
-	            if (status == 2) displayerStatus = "Hateful";
-	            if (status == 3) displayerStatus = "Afraid";
-	            if (status == 4) displayerStatus = "Agonising";
-	        }
-
-	    if (race.id == 2)
-	        {
-	            if (status == 0) displayerStatus = "Calm";
-	            if (status == 1) displayerStatus = "Weakened";
-	            if (status == 2) displayerStatus = "Sad";
-	            if (status == 3) displayerStatus = "Wrathful";
-	            if (status == 4) displayerStatus = "Desperate";
-	        }
-	}*/
-    
 }
