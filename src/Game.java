@@ -17,13 +17,13 @@ import java.util.Date;
  *
  */
 public class Game {
-	/** Le tamagochi du joueur */
+	/** Le tamagochi du joueur. */
 	private Creature creature;
-	/** L'environnement dans lequel évolue le tamagochi*/
+	/** L'environnement dans lequel évolue le tamagochi.*/
     private Environment environment;
-    /** Le moteur graphique du jeu*/
+    /** Le moteur graphique du jeu.*/
     private Engine engine;
-    
+    /** Garde en mémoire le fichier dans lequel le tamagochi est sauvegardé.*/
     private String savePath;
     
     /** Constructeur vide de game, initialise une partie vide remplie par loadGame() */
@@ -232,11 +232,15 @@ public class Game {
 			
 			loadDate = br.readLine();
 	    	try {
-	    		
 	    		Date date = formater.parse(loadDate);
 	    		
 	    		if (date.compareTo(today) == -1) {
-	        		System.out.println("OK"); // TODO Traitement sur les effets du temps. Calendar fait le taff.
+	    			long nbHours = ((today.getTime() -  date.getTime()) /3600000);
+	    			creature.modifyHunger((int) (-3*nbHours));
+					creature.modifyMorale((int) (-3*nbHours));
+					creature.modifyFocus((int) (-3*nbHours));
+					engine.update();
+	        		
 	        	} else {
 	        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
 	        	}
@@ -249,33 +253,5 @@ public class Game {
 		catch (Exception e){
 			System.out.println(e.toString());
 		}
-    	
     }
-
-
-    // We'll need this later. C'est la base de l'interpréteur de commandes.
-
-      /*
-            int retrievedCommand
-
-            if (retrievedCommand ==) {increaseHungerValue(100);}
-            if (retrievedCommand ==) {increaseMoraleValue(100);}
-            if (retrievedCommand ==) {increaseFocusValue(100);}
-      
-
-
-        if (race.id == 1)
-            {
-                if (status == 0) displayerStatus = "Hunt some puny humans";
-                if (status == 1) displayerStatus = "Fight a bunch of angels";
-                if (status == 2) displayerStatus = "Pray the mighty Satan";
-            }
-
-        if (race.id == 2)
-            {
-                if (status == 0) displayerStatus = "Reap a few souls";
-                if (status == 1) displayerStatus = "Possess a mortal";
-                if (status == 2) displayerStatus = "Haunt an old crypt";
-            } */
-
 }
