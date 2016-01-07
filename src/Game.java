@@ -23,13 +23,20 @@ public class Game {
     private Environment environment;
     /** Le moteur graphique du jeu*/
     private Engine engine;
-    //private int totalTimeLapsed;
+    
+    private String savePath;
     
     /** Constructeur vide de game, initialise une partie vide remplie par loadGame() */
     public Game()
     {
-        this.creature = new Creature("Lucifron", 1);
-        this.environment = new Environment(1);
+    	this("Lucifron", 1, "save1.txt");
+    }
+    
+    public Game(String path) {
+    	this.loadGame(path);
+    	this.savePath = path;
+    	engine = new Engine(creature);
+    	gameLoop();
     }
     
     /**
@@ -40,10 +47,13 @@ public class Game {
      * @param raceId
      * 		Le type de tamagochi, démon ou spectre.
      */
-    public Game(String name, int raceId)
+    public Game(String name, int raceId, String path)
     {
     	this.creature = new Creature(name, raceId);
     	this.environment = new Environment(raceId);
+    	this.engine = new Engine(this.creature);
+    	this.savePath = path;
+    	gameLoop();
     }
     
     /**
@@ -138,10 +148,11 @@ public class Game {
     	Thread loop = new Thread(new Runnable(){
 			@Override
 			public void run(){
-				while(!false) {
+				while(checkState()) {
 					creature.modifyHunger(-environment.getDecreaseHunger());
 					creature.modifyMorale(-environment.getDecreaseMorale());
 					creature.modifyFocus(-environment.getDecreaseFocus());
+					engine.update();
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -151,7 +162,6 @@ public class Game {
 			}
 		});
 		loop.start();
-    	return;
     }
     
     /**
@@ -226,7 +236,7 @@ public class Game {
 	    		Date date = formater.parse(loadDate);
 	    		
 	    		if (date.compareTo(today) == -1) {
-	        		System.out.println("OK"); // Traitement sur les effets du temps. Calendar fait le taff.
+	        		System.out.println("OK"); // TODO Traitement sur les effets du temps. Calendar fait le taff.
 	        	} else {
 	        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
 	        	}
@@ -240,8 +250,6 @@ public class Game {
 			System.out.println(e.toString());
 		}
     	
-    	// Initialiser l'engine , ici ? Ou ailleur ?
-    	return;
     }
 
 

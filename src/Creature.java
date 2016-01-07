@@ -22,17 +22,7 @@ public class Creature {
      */
     public Creature()
     {
-        this.name = "Lucifron";
-
-        this.raceId = 1;
-        //displayerStatus = "Happy";
-
-        this.hunger = 100;
-        this.morale = 100;
-        this.focus = 100;
-        this.status = 0;
-        
-        //totalTimeLapsed = 0;
+    	this("Lucifron", 1);
     }
     
     /**
@@ -59,12 +49,12 @@ public class Creature {
     /**
      * Met à jour la jauge de faim.
      * 
-     * @param newHunger
+     * @param value
      * 		La valeur qui modifie la jauge.
      */
-	public void modifyHunger(int newHunger)
+	public void modifyHunger(int value)
 	{
-		this.hunger += newHunger;
+		this.hunger += value;
 	    if (this.hunger > 100) this.hunger = 100;
 	    if (this.hunger < 0) this.hunger = 0;
 	}
@@ -72,12 +62,12 @@ public class Creature {
 	/**
 	 * Met à jour la jauge de moral.
 	 * 
-	 * @param newMorale
+	 * @param value
 	 * 		La valeur qui modifie la jauge.
 	 */
-	public void modifyMorale(int newMorale)
+	public void modifyMorale(int value)
 	{
-		this.morale += newMorale;
+		this.morale += value;
 	    if (this.morale > 100) this.morale = 100;
 	    if (this.morale < 0) this.morale = 0;
 	}
@@ -85,12 +75,12 @@ public class Creature {
 	/**
 	 * Met à jour la jauge de concentration.
 	 * 
-	 * @param newFocus
+	 * @param value
 	 * 		La valeur qui modifie la jauge.
 	 */
-	public void modifyFocus(int newFocus)
+	public void modifyFocus(int value)
 	{
-		this.focus += newFocus;
+		this.focus += value;
 	    if (this.focus > 100) this.focus = 100;
 	    if (this.focus < 0) this.focus = 0;
 	}

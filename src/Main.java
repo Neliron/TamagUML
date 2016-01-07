@@ -10,7 +10,7 @@ public class Main {
 	 */	
 	public static void main(String[] args) {
 		
-		new Engine(new Creature("yolo", 2));
+		new Menu();
 
 	}
 

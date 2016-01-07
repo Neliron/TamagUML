@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  * @author TORO DAPP
  *
  */
-public class Engine{
+public class Engine {
 	/**	 */
 	private JButton feed;
 	/**	 */
@@ -20,7 +20,7 @@ public class Engine{
 	/**	 */
 	private JButton pray;
 	/**	 */
-	private JLabel img;
+	private JLabel img, hungerText, moraleText, focusText;
 	/**	 */
 	private JFrame tamagochi = new JFrame();
 	/**	 */
@@ -28,61 +28,88 @@ public class Engine{
 	/**	 */
 	private Creature pet;
 	
+	private static String OS = System.getProperty("os.name").toLowerCase();
+	
+	private int windowSizeCorrection = 0;
+	
 	/**
 	 * 
 	 * @param creature
 	 * 
 	 */
-	public Engine(Creature creature){
+	public Engine(Creature creature) {
 		
-		this.pet = creature;
-		if(this.pet.getRaceId() == 1){
-			feed = new JButton("Hunt humans");
-			raiseMorale = new JButton("Fight Angels");
-			pray = new JButton("Worship Satan");
-		} else if(this.pet.getRaceId() == 2) {
-			feed = new JButton("Reap souls");
-			raiseMorale = new JButton("Posess human");
-			pray = new JButton("Haunt crypt");
+		if(isWindows()) {
+			this.windowSizeCorrection = 30;
 		}
 		
-		this.img = new JLabel(new ImageIcon("res/demon.png"));
-		this.img.setBounds(0, 0, 200, 200);
-		
-	    this.tamagochi.setTitle("Test");
+
+	    this.tamagochi.setTitle("Tamagotchi");
 	    this.tamagochi.setSize(800, 640);
 	    this.tamagochi.setLocationRelativeTo(null);
 	    this.tamagochi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.tamagochi.setResizable(false);
+		
+		this.pet = creature;
+		
+		if(this.pet.getRaceId() == 1) {
+			this.feed = new JButton("Hunt humans");
+			this.raiseMorale = new JButton("Fight Angels");
+			this.pray = new JButton("Worship Satan");
+			this.img = new JLabel(new ImageIcon("res/demon.png"));
+		} else if(this.pet.getRaceId() == 2) {
+			this.feed = new JButton("Reap souls");
+			this.raiseMorale = new JButton("Possess human");
+			this.pray = new JButton("Haunt crypt");
+			this.img = new JLabel(new ImageIcon("res/banshee.jpg"));
+		}
+		
+		
+		this.img.setBounds(0, 0, 300, 300);
+		
+		this.hungerText = new JLabel("Hunger : " + pet.getHunger() + " %");
+		this.moraleText = new JLabel("Morale : " + pet.getMorale() + " %");
+		this.focusText = new JLabel("Focus  : " + pet.getFocus() + " %");
+		
+		this.hungerText.setBounds(10, 520-windowSizeCorrection, 150, 30);
+		this.moraleText.setBounds(10, 560-windowSizeCorrection, 150, 30);
+		this.focusText.setBounds(10, 600-windowSizeCorrection, 150, 30);
 	    
-	    this.feed.setBounds(640, 520, 150, 30);
-	    this.raiseMorale.setBounds(640, 560, 150, 30);
-	    this.pray.setBounds(640, 600, 150, 30);
+	    this.feed.setBounds(640, 520-windowSizeCorrection, 150, 30);
+	    this.raiseMorale.setBounds(640, 560-windowSizeCorrection, 150, 30);
+	    this.pray.setBounds(640, 600-windowSizeCorrection, 150, 30);
 	    
 	    
-	    this.feed.addActionListener(new ActionListener(){
+	    this.feed.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pet.modifyHunger(20);
+				update();
 			}
 	    });
 	    
-	    this.raiseMorale.addActionListener(new ActionListener(){
+	    this.raiseMorale.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pet.modifyMorale(20);
+				update();
 			}
 	    });
 	    
-	    this.pray.addActionListener(new ActionListener(){
+	    this.pray.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pet.modifyFocus(20);
+				update();
 			}
 	    });
+	    
 	    this.panel.setLayout(null);
 	    
 	    this.panel.add(this.img);
+	    this.panel.add(this.hungerText);
+	    this.panel.add(this.moraleText);
+	    this.panel.add(this.focusText);
 	    this.panel.add(this.feed);
 	    this.panel.add(this.raiseMorale);
 	    this.panel.add(this.pray);
@@ -95,8 +122,16 @@ public class Engine{
 	/**
 	 * 
 	 */
-	public void update(){
-		
+	public void update() {
+		this.hungerText.setText("Hunger : " + this.pet.getHunger() + " %");
+		this.moraleText.setText("Morale : " + this.pet.getMorale() + " %");
+		this.focusText.setText("Focus : " + this.pet.getFocus() + " %");
+	}
+	
+	public static boolean isWindows() {
+
+		return (OS.indexOf("win") >= 0);
+
 	}
 
 }
