@@ -1,3 +1,5 @@
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -35,7 +37,12 @@ public class Game {
     public Game(String path) {
     	this.loadGame(path);
     	this.savePath = path;
-    	engine = new Engine(this.creature);
+    	this.engine = new Engine(this.creature);
+    	this.engine.getFrame().addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+    			saveGame(savePath);
+    		}
+    	});
     	this.gameLoop();
     }
     
@@ -53,6 +60,11 @@ public class Game {
     	this.environment = new Environment(raceId);
     	this.engine = new Engine(this.creature);
     	this.savePath = path;
+    	this.engine.getFrame().addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+    			saveGame(savePath);
+    		}
+    	});
     	this.gameLoop();
     }
     
@@ -248,6 +260,8 @@ public class Game {
 		    		e.printStackTrace();
 		    	}
 			}
+			else
+				new LoadGameMenu();
 
 			br.close(); 
 		}		
