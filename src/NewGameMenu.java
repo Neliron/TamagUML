@@ -82,11 +82,11 @@ public class NewGameMenu {
 				String path = "";
 				
 				if(save1Radio.isSelected())
-					path = "save1.txt";
+					path = "save/save1.txt";
 				else if(save2Radio.isSelected())
-					path = "save2.txt";
+					path = "save/save2.txt";
 				else if(save3Radio.isSelected())
-					path = "save3.txt";
+					path = "save/save3.txt";
 				
 				if(demonRadio.isSelected())
 					new Game(nameField.getText(), 1, path);

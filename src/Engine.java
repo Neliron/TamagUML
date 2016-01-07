@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,7 +24,7 @@ public class Engine {
 	/**	 */
 	private JLabel img, hungerText, moraleText, focusText;
 	/**	 */
-	private JFrame tamagochi = new JFrame();
+	private JFrame frame = new JFrame();
 	/**	 */
 	private JPanel panel = new JPanel();
 	/**	 */
@@ -40,15 +42,14 @@ public class Engine {
 	public Engine(Creature creature) {
 		
 		if(isWindows()) {
-			this.windowSizeCorrection = 30;
+			//this.windowSizeCorrection = 30;
 		}
 		
 
-	    this.tamagochi.setTitle("Tamagotchi");
-	    this.tamagochi.setSize(800, 640);
-	    this.tamagochi.setLocationRelativeTo(null);
-	    this.tamagochi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.tamagochi.setResizable(false);
+	    this.frame.setTitle("Tamagotchi");
+	    this.frame.setLocationRelativeTo(null);
+	    this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    this.frame.setResizable(false);
 		
 		this.pet = creature;
 		
@@ -61,7 +62,7 @@ public class Engine {
 			this.feed = new JButton("Reap souls");
 			this.raiseMorale = new JButton("Possess human");
 			this.pray = new JButton("Haunt crypt");
-			this.img = new JLabel(new ImageIcon("res/banshee.jpg"));
+			this.img = new JLabel(new ImageIcon("res/banshee.png"));
 		}
 		
 		
@@ -114,9 +115,11 @@ public class Engine {
 	    this.panel.add(this.pray);
 	    this.panel.add(this.img);
 	    
-	    this.tamagochi.setContentPane(this.panel);
+	    this.frame.setContentPane(this.panel);
 	    
-	    this.tamagochi.setVisible(true);
+	    this.frame.setBounds(0, 0, 800, 640);
+	    
+	    this.frame.setVisible(true);
 	}
 	
 	/**
@@ -132,6 +135,10 @@ public class Engine {
 
 		return (OS.indexOf("win") >= 0);
 
+	}
+	
+	public JFrame getFrame() {
+		return this.frame;
 	}
 
 }

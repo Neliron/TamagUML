@@ -186,7 +186,7 @@ public class Game {
     public void saveGame(String name)
     {
     	Date today = new Date();
-    	SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    	SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     	String todayString = formater.format(today);
     	
     	try {
@@ -194,14 +194,14 @@ public class Game {
 			BufferedWriter bw = new BufferedWriter (fw);
 			PrintWriter saveFile = new PrintWriter (bw); 
 			
-			saveFile.println(creature.getName());
-			saveFile.println(creature.getHunger());
-			saveFile.println(creature.getMorale());
-			saveFile.println(creature.getFocus());
-			saveFile.println(creature.getRaceId());
-			saveFile.println(creature.getStatus());
+			saveFile.println(this.creature.getName());
+			saveFile.println(this.creature.getHunger());
+			saveFile.println(this.creature.getMorale());
+			saveFile.println(this.creature.getFocus());
+			saveFile.println(this.creature.getRaceId());
+			saveFile.println(this.creature.getStatus());
 			
-			saveFile.println(environment.getSector());
+			saveFile.println(this.environment.getSector());
 			
 			saveFile.println(todayString);
 			
@@ -223,10 +223,10 @@ public class Game {
      */
     public void loadGame(String name)
     {
-    	creature = new Creature();
+    	this.creature = new Creature();
     	Date today = new Date();
-    	String loadDate ;
-    	SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    	String loadDate;
+    	SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     	
     	try{
 			InputStream ips=new FileInputStream(name); 
@@ -234,24 +234,25 @@ public class Game {
 			BufferedReader br=new BufferedReader(ipsr);
 			String test = br.readLine();
 			if (test != null) {
-				creature.setName(test);
-				creature.setHunger(Integer.parseInt(br.readLine()));
-				creature.setMorale(Integer.parseInt(br.readLine()));
-				creature.setFocus(Integer.parseInt(br.readLine()));
-				creature.setRaceId(Integer.parseInt(br.readLine()));
-				creature.setStatus(Integer.parseInt(br.readLine()));
+				this.creature.setName(test);
+				this.creature.setHunger(Integer.parseInt(br.readLine()));
+				this.creature.setMorale(Integer.parseInt(br.readLine()));
+				this.creature.setFocus(Integer.parseInt(br.readLine()));
+				this.creature.setRaceId(Integer.parseInt(br.readLine()));
+				this.creature.setStatus(Integer.parseInt(br.readLine()));
 				
-				environment = new Environment(Integer.parseInt(br.readLine()));
+				this.environment = new Environment(Integer.parseInt(br.readLine()));
 				
 				loadDate = br.readLine();
 		    	try {
 		    		Date date = formater.parse(loadDate);
 		    		
 		    		if (date.compareTo(today) == -1) {
-		    			long nbHours = ((today.getTime() -  date.getTime()) /3600000);
-		    			creature.modifyHunger((int) (-3*nbHours));
-						creature.modifyMorale((int) (-3*nbHours));
-						creature.modifyFocus((int) (-3*nbHours));
+		    			float nbHours = ((today.getTime() -  date.getTime()) /3600000);
+		    			System.out.println(nbHours);
+		    			this.creature.modifyHunger((int) (-3*nbHours));
+		    			this.creature.modifyMorale((int) (-3*nbHours));
+		    			this.creature.modifyFocus((int) (-3*nbHours));
 		        		
 		        	} else {
 		        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
