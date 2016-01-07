@@ -220,33 +220,34 @@ public class Game {
 			InputStream ips=new FileInputStream(name); 
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
-			
-			creature.setName(br.readLine());
-			creature.setHunger(Integer.parseInt(br.readLine()));
-			creature.setMorale(Integer.parseInt(br.readLine()));
-			creature.setFocus(Integer.parseInt(br.readLine()));
-			creature.setRaceId(Integer.parseInt(br.readLine()));
-			creature.setStatus(Integer.parseInt(br.readLine()));
-			
-			environment = new Environment(Integer.parseInt(br.readLine()));
-			
-			loadDate = br.readLine();
-	    	try {
-	    		Date date = formater.parse(loadDate);
-	    		
-	    		if (date.compareTo(today) == -1) {
-	    			long nbHours = ((today.getTime() -  date.getTime()) /3600000);
-	    			creature.modifyHunger((int) (-3*nbHours));
-					creature.modifyMorale((int) (-3*nbHours));
-					creature.modifyFocus((int) (-3*nbHours));
-					engine.update();
-	        		
-	        	} else {
-	        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
-	        	}
-	    	} catch (ParseException e) {
-	    		e.printStackTrace();
-	    	}
+			String test = br.readLine();
+			if (test != null) {
+				creature.setName(test);
+				creature.setHunger(Integer.parseInt(br.readLine()));
+				creature.setMorale(Integer.parseInt(br.readLine()));
+				creature.setFocus(Integer.parseInt(br.readLine()));
+				creature.setRaceId(Integer.parseInt(br.readLine()));
+				creature.setStatus(Integer.parseInt(br.readLine()));
+				
+				environment = new Environment(Integer.parseInt(br.readLine()));
+				
+				loadDate = br.readLine();
+		    	try {
+		    		Date date = formater.parse(loadDate);
+		    		
+		    		if (date.compareTo(today) == -1) {
+		    			long nbHours = ((today.getTime() -  date.getTime()) /3600000);
+		    			creature.modifyHunger((int) (-3*nbHours));
+						creature.modifyMorale((int) (-3*nbHours));
+						creature.modifyFocus((int) (-3*nbHours));
+		        		
+		        	} else {
+		        		System.out.println("Fichier corrompu"); // Date en avance , pas normal...
+		        	}
+		    	} catch (ParseException e) {
+		    		e.printStackTrace();
+		    	}
+			}
 
 			br.close(); 
 		}		
