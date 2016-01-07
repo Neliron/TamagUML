@@ -35,8 +35,8 @@ public class Game {
     public Game(String path) {
     	this.loadGame(path);
     	this.savePath = path;
-    	engine = new Engine(creature);
-    	gameLoop();
+    	engine = new Engine(this.creature);
+    	this.gameLoop();
     }
     
     /**
@@ -53,7 +53,7 @@ public class Game {
     	this.environment = new Environment(raceId);
     	this.engine = new Engine(this.creature);
     	this.savePath = path;
-    	gameLoop();
+    	this.gameLoop();
     }
     
     /**
