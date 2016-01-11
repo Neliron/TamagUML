@@ -127,32 +127,6 @@ public class Game {
     }
     
     /** 
-     * Met à jour le status du tamagochi en fonction de ses caractéristiques vitales. 
-     */
-    public void updateStatus()
-    {
-        int newStatus = 0;
-        int veryBadLimit = 0;
-
-        if (this.creature.getHunger() < 25) {
-        	newStatus = 1;
-        	veryBadLimit++;
-        }
-        if (this.creature.getMorale() < 25) {
-        	newStatus = 2; 
-        	veryBadLimit++;
-        }
-        if (this.creature.getFocus() < 25) {
-        	newStatus = 3;
-        	veryBadLimit++;
-        }
-        if (veryBadLimit > 1) 
-        	newStatus = 4;
-
-        this.creature.setStatus(newStatus);
-    }
-    
-    /** 
      * Boucle qui décrémente les attributs d'une créature toute les secondes.  
      */
     public void gameLoop()
@@ -164,6 +138,7 @@ public class Game {
 					creature.modifyHunger(-environment.getDecreaseHunger());
 					creature.modifyMorale(-environment.getDecreaseMorale());
 					creature.modifyFocus(-environment.getDecreaseFocus());
+					creature.updateStatus();
 					engine.update();
 					try {
 						Thread.sleep(1000);

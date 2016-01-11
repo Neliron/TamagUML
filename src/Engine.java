@@ -22,7 +22,7 @@ public class Engine {
 	/**	 */
 	private JButton pray;
 	/**	 */
-	private JLabel img, hungerText, moraleText, focusText;
+	private JLabel img, hungerText, moraleText, focusText, status, name;
 	/**	 */
 	private JFrame frame = new JFrame();
 	/**	 */
@@ -71,10 +71,15 @@ public class Engine {
 		this.hungerText = new JLabel("Hunger : " + pet.getHunger() + " %");
 		this.moraleText = new JLabel("Morale : " + pet.getMorale() + " %");
 		this.focusText = new JLabel("Focus  : " + pet.getFocus() + " %");
+		this.status = new JLabel(Creature.STATUSNAME[pet.getRaceId()-1][pet.getStatus()]);
+		this.name = new JLabel(pet.getName());
 		
 		this.hungerText.setBounds(10, 520-windowSizeCorrection, 150, 30);
 		this.moraleText.setBounds(10, 560-windowSizeCorrection, 150, 30);
 		this.focusText.setBounds(10, 600-windowSizeCorrection, 150, 30);
+		
+		this.status.setBounds(325, 560-windowSizeCorrection, 150, 30);
+		this.name.setBounds(325, 520-windowSizeCorrection, 150, 30);
 	    
 	    this.feed.setBounds(640, 520-windowSizeCorrection, 150, 30);
 	    this.raiseMorale.setBounds(640, 560-windowSizeCorrection, 150, 30);
@@ -114,6 +119,8 @@ public class Engine {
 	    this.panel.add(this.raiseMorale);
 	    this.panel.add(this.pray);
 	    this.panel.add(this.img);
+	    this.panel.add(this.name);
+	    this.panel.add(this.status);
 	    
 	    this.frame.setContentPane(this.panel);
 	    
@@ -129,6 +136,7 @@ public class Engine {
 		this.hungerText.setText("Hunger : " + this.pet.getHunger() + " %");
 		this.moraleText.setText("Morale : " + this.pet.getMorale() + " %");
 		this.focusText.setText("Focus : " + this.pet.getFocus() + " %");
+		this.status.setText(Creature.STATUSNAME[pet.getRaceId()-1][pet.getStatus()]);
 	}
 	
 	public static boolean isWindows() {

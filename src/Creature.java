@@ -17,6 +17,9 @@ public class Creature {
     /**	Le statut du tamagochi */
     private int status;
     
+    public static String STATUSNAME[][] = {{"Happy","Furious","Starving","Frightened","Dying"},
+    										{"Happy","Depressed","Weakened","Angry","Desperate"}};
+    
     /**	 
      * Constructeur vide d'un objet Creature
      */
@@ -44,6 +47,32 @@ public class Creature {
         this.status = 0;
         
         //totalTimeLapsed = 0;
+    }
+    
+    /** 
+     * Met à jour le status du tamagochi en fonction de ses caractéristiques vitales. 
+     */
+    public void updateStatus()
+    {
+        int newStatus = 0;
+        int veryBadLimit = 0;
+
+        if (this.getMorale() < 25) {
+        	newStatus = 1;
+        	veryBadLimit++;
+        }
+        if (this.getHunger() < 25) {
+        	newStatus = 2; 
+        	veryBadLimit++;
+        }
+        if (this.getFocus() < 25) {
+        	newStatus = 3;
+        	veryBadLimit++;
+        }
+        if (veryBadLimit > 1) 
+        	newStatus = 4;
+
+        this.setStatus(newStatus);
     }
     
     /**
