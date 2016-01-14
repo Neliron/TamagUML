@@ -19,13 +19,13 @@ import java.util.Date;
  *
  */
 public class Game {
-	/** Le tamagochi du joueur. */
+	/** Le tamagotchi du joueur. */
 	private Creature creature;
-	/** L'environnement dans lequel Ã©volue le tamagochi.*/
+	/** L'environnement dans lequel évolue le tamagochi.*/
     private Environment environment;
     /** Le moteur graphique du jeu.*/
     private Engine engine;
-    /** Garde en mÃ©moire le fichier dans lequel le tamagochi est sauvegardÃ©.*/
+    /** Garde en mémoire le fichier dans lequel le tamagochi est sauvegardé.*/
     private String savePath;
     
     /** Constructeur vide de game, initialise une partie vide remplie par loadGame() */
@@ -33,7 +33,12 @@ public class Game {
     {
     	this("Lucifron", 1, "save1.txt");
     }
-    
+    /**
+     * Second constructeur de Game.
+     * 
+     * @param path
+     * 		Le chemin vers l'emplacement de sauvegarde.
+     */
     public Game(String path) {
     	this.loadGame(path);
     	this.savePath = path;
@@ -47,12 +52,14 @@ public class Game {
     }
     
     /**
-     * Second constructeur de Game, permet de lancer une nouvelle partie.
+     * Troisiéme constructeur de Game, permet de lancer une nouvelle partie.
      * 
      * @param name
      * 		Le nom du tamagochi
      * @param raceId
      * 		Le type de tamagochi, dÃ©mon ou spectre.
+     * @param path
+     * 		Le chemin vers l'emplacement de sauvegarde.
      */
     public Game(String name, int raceId, String path)
     {
@@ -69,7 +76,7 @@ public class Game {
     }
     
     /**
-     * Renvoi le tamagochi correspondant Ã  la partie en cours.
+     * Renvoi le tamagochi correspondant à la partie en cours.
      * 
      * @return
      * 		Un objet Creature qui correspond au tamagochi de la partie en cours. 
@@ -80,7 +87,7 @@ public class Game {
 	}
 	
 	/**
-	 * Remplace la creature prÃ©sente dans la partie en cours.
+	 * Remplace la creature présente dans la partie en cours.
 	 * 
 	 * @param creature
 	 * 		La nouvelle creature de la partie.
@@ -93,7 +100,7 @@ public class Game {
 	 * Renvoi l'environnement du tamagochi dans la partie en cours.
 	 * 
 	 * @return
-	 * 		Un objet Environment correspondant Ã  la partie en cours.
+	 * 		Un objet Environment correspondant à la partie en cours.
 	 */
 	public Environment getEnvironment() {
 		return environment;
@@ -109,7 +116,7 @@ public class Game {
 	}
 	
     /** 
-     *	VÃ©rifie l'Ã©tat de la crÃ©ature
+     *	Vérifie l'état de la créature
      *
      *	@return
      *		False si il est mort, true sinon. 
@@ -127,7 +134,7 @@ public class Game {
     }
     
     /** 
-     * Boucle qui dÃ©crÃ©mente les attributs d'une crÃ©ature toute les secondes.  
+     * Boucle qui décrémente les attributs d'une créature toute les secondes.  
      */
     public void gameLoop()
     {
@@ -190,7 +197,7 @@ public class Game {
     }
     
     /**
-     * Charge une partie sauvegardÃ© pour la reprendre.
+     * Charge une partie sauvegardé pour la reprendre.
      * 
      * @param name
      * 		Le nom du fichier de sauvegarde.

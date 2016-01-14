@@ -7,17 +7,19 @@ import javax.swing.JPanel;
 
 
 public class Menu {
-	
+	/**	 */
 	private JButton newGameButton, loadButton, exitButton;
 	/**	 */
 	private JFrame menuFrame = new JFrame();
 	/**	 */
 	private JPanel menuPanel = new JPanel();
-	
+	/**	 */
 	private static String OS = System.getProperty("os.name").toLowerCase();
-	
+	/**	 */
 	private int windowSizeCorrection = 0;
-	
+	/**	 
+	 * 
+	 */
 	public Menu() {
 		
 		if(isWindows()) {
@@ -73,6 +75,9 @@ public class Menu {
 		
 	}
 	
+	/**	
+	 * 
+	 */
 	public static boolean isWindows() {
 
 		return (OS.indexOf("win") >= 0);

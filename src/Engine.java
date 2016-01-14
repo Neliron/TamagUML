@@ -13,29 +13,30 @@ import javax.swing.JPanel;
  *
  */
 public class Engine {
-	/**	 */
+	
+	/**	Bouton pour augmenter la variable hunger. */
 	private JButton feed;
-	/**	 */
+	/**	Bouton pour augmenter la variable morale. */
 	private JButton raiseMorale;
-	/**	 */
+	/**	Bouton pour augmenter la variable focus. */
 	private JButton pray;
-	/**	 */
+	/**	Différents texte affiché à l'écran */
 	private JLabel img, hungerText, moraleText, focusText, status, name;
-	/**	 */
+	/**	La fenêtre du jeu */
 	private JFrame frame = new JFrame();
-	/**	 */
+	/**	Le layout de la fenêtre */
 	private JPanel panel = new JPanel();
-	/**	 */
+	/**	Le tamagotchi */
 	private Creature pet;
-	
+	/** Verification de L'OS sur lequel le jeux est lancé. */
 	private static String OS = System.getProperty("os.name").toLowerCase();
-	
+	/** Correction de la taille de la fenêtre. */
 	private int windowSizeCorrection = 0;
 	
 	/**
-	 * 
+	 * Constructeur de l'objet Engine.
 	 * @param creature
-	 * 
+	 * 		Le tamagotchi que le joueur à crée /choisis.
 	 */
 	public Engine(Creature creature) {
 		
@@ -126,7 +127,7 @@ public class Engine {
 	}
 	
 	/**
-	 * 
+	 * Met à jour l'affichage des jauges.
 	 */
 	public void update() {
 		this.hungerText.setText("Hunger : " + this.pet.getHunger() + " %");
@@ -135,12 +136,22 @@ public class Engine {
 		this.status.setText(Creature.STATUSNAME[pet.getRaceId()-1][pet.getStatus()]);
 	}
 	
+	/**
+	 * Vérifie l'OS sur lequel est lancé le jeu.
+	 * @return
+	 * 		True si on est sur windows , false sinon.
+	 */
 	public static boolean isWindows() {
 
 		return (OS.indexOf("win") >= 0);
 
 	}
 	
+	/**
+	 * Retourne l'objet frame de type JFrame.
+	 * @return
+	 * 		Retourne un objet de type JFrame.
+	 */
 	public JFrame getFrame() {
 		return this.frame;
 	}

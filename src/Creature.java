@@ -6,7 +6,7 @@
 public class Creature {
 	/** Le nom du tamagochi. */
 	private String name;
-	/**	La race du tamagochi identifiÃ©e avec un ID */
+	/**	La race du tamagochi identifiée avec un ID */
     public int raceId;
     /**	La jauge de faim du tamagochi */
     private int hunger;
@@ -50,7 +50,7 @@ public class Creature {
     }
     
     /** 
-     * Met Ã  jour le status du tamagochi en fonction de ses caractÃ©ristiques vitales. 
+     * Met à jour le status du tamagochi en fonction de ses caractéristiques vitales. 
      */
     public void updateStatus()
     {
@@ -76,7 +76,7 @@ public class Creature {
     }
     
     /**
-     * Met Ã  jour la jauge de faim.
+     * Met à jour la jauge de faim.
      * 
      * @param value
      * 		La valeur qui modifie la jauge.
@@ -89,7 +89,7 @@ public class Creature {
 	}
 	
 	/**
-	 * Met Ã  jour la jauge de moral.
+	 * Met à jour la jauge de moral.
 	 * 
 	 * @param value
 	 * 		La valeur qui modifie la jauge.
@@ -102,7 +102,7 @@ public class Creature {
 	}
 	
 	/**
-	 * Met Ã  jour la jauge de concentration.
+	 * Met à  jour la jauge de concentration.
 	 * 
 	 * @param value
 	 * 		La valeur qui modifie la jauge.

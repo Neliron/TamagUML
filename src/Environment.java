@@ -4,19 +4,19 @@
  *
  */
 public class Environment {
-	/**	 */
+	/**	Le nom de l'environment */
 	private String name;
-	/**	 */
+	/**	L'identifiant de l'environment */
 	private int sector;
-	/**	 */
+	/**	La vitesse de décrémentation de la variable hunger */
 	private int decreaseHunger;
-	/**	 */
+	/**	La vitesse de décrémentation de la variable morale */
 	private int decreaseMorale;
-	/**	 */
+	/**	La vitesse de décrémentation de la variable focus */
 	private int decreaseFocus;
 	
 	/**
-	 * 
+	 * Constructeur vide de l'objet Environment
 	 */
 	public Environment()
 	{
@@ -29,9 +29,10 @@ public class Environment {
 	}
 	
 	/**
+	 * Constructeur de l'objet Environment
 	 * 
 	 * @param draftLand
-	 * 
+	 * 		L'id associé à sector.
 	 */
 	public Environment(int draftLand) // Environnements actuels du jeu
 	{
@@ -39,7 +40,7 @@ public class Environment {
 	    {
 	    
 	    case 1 :
-	    	this.name = "Satan's Gardens"; // Pour les dÃ©mons
+	    	this.name = "Satan's Gardens"; // Pour les démons
 	    	this.sector = 1;
 
 	    	this.decreaseHunger = 1;
@@ -61,18 +62,18 @@ public class Environment {
 	}
 	
 	/**
-	 * 
+	 * Retourne la variable name
 	 * @return
-	 * 
+	 * 		Un objet String correspondant au nom du tamagotchi
 	 */
 	public String getName()
 	{
 	    return this.name;
 	}
 	/**
-	 * 
+	 * Retourne la variable sector
 	 * @return
-	 * 
+	 * 		Un objet int correpondant à l'id de l'environment
 	 */
 	public int getSector()
 	{
@@ -80,9 +81,9 @@ public class Environment {
 	}
 
 	/**
-	 * 
+	 * Retourne la variable decreaseHunger
 	 * @return
-	 * 
+	 * 		Un objet int correspondant à la valeur de décrémentation de la variable hunger
 	 */
 	public int getDecreaseHunger()
 	{
@@ -90,9 +91,9 @@ public class Environment {
 	}
 	
 	/**
-	 * 
+	 * Retourne la variable decreaseMorale
 	 * @return
-	 * 
+	 * 		Un objet int correspondant à la valeur de décrémentation de la variable decreaseMorale
 	 */
 	public int getDecreaseMorale()
 	{
@@ -100,9 +101,9 @@ public class Environment {
 	}
 
 	/**
-	 * 
+	 * Retourne la variable decreaseFocus
 	 * @return
-	 * 
+	 * 		Un objet int correspondant à la valeur de décrémentation de la variable decreaseFocus
 	 */
 	public int getDecreaseFocus()
 	{
