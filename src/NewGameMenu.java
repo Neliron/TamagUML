@@ -8,25 +8,33 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-
+/**
+ * La classe qui gére l'interface utilisateur 
+ * de la fenêtre de lancement d'une nouvelle partie.
+ * @author TORO DAPP BOUCHER
+ *
+ */
 public class NewGameMenu {
-	
+	/** Bouton pour lancer une partie ou revenir à l'accueil.	 */
 	private JButton startButton, returnButton;
-	/**	 */
+	/**	Nouvelle fenêtre pour la création d'un tamagotchi. */
 	private JFrame newGameFrame = new JFrame();
-	/**	 */
+	/**Nouveau layout pour la disposition des éléments.	 */
 	private JPanel newGamePanel = new JPanel();
-	
+	/** Case à cocher correspondant aux choix de l'emplacement de sauvegardes ou au choix de la race */
 	private JRadioButton demonRadio, bansheeRadio, save1Radio, save2Radio, save3Radio;
-	
+	/** Empeche de choisir plusieurs emplacement de sauvegarde en même temps ou plusieurs race.*/
 	private ButtonGroup raceChoice, saveChoice;
-	
+	/**	Champs de saisie du nom. */
 	private JTextField nameField;
-	
+	/**	Verification de L'OS sur lequel le jeux est lancé. */
 	private static String OS = System.getProperty("os.name").toLowerCase();
-	
+	/**	Correction de la taille de la fenêtre. */
 	private int windowSizeCorrection = 0;
 	
+	/**
+	 * Constructeur d'un objet NewGameMenu
+	 */
 	public NewGameMenu() {
 		
 		if(isWindows()) {
@@ -112,7 +120,11 @@ public class NewGameMenu {
 			}
 	    });
 	}
-	
+	/**	 
+	 * Vérifie l'OS sur lequel est lancé le jeu.
+	 * @return
+	 * 		True si on est sur windows , false sinon.
+	 */
 	public static boolean isWindows() {
 
 		return (OS.indexOf("win") >= 0);

@@ -8,8 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * La classe qui va gérer le moteur graphique du jeu, 
+ * c'est à dire l'affichage qu'il va y avoir une fois la partie lancé.
  * 
- * @author TORO DAPP
+ * @author TORO DAPP BOUCHER
  *
  */
 public class Engine {

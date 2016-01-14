@@ -7,23 +7,33 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+/**
+ * La classe qui gére l'interface utilisateur 
+ * de la fenêtre de chargement d'une partie.
+ * 
+ * @author TORO DAPP BOUCHER
+ *
+ */
 
 public class LoadGameMenu {
-
+	/** Bouton pour charger une partie ou pour retourner à l'écran d'accueil	 */
 	private JButton loadButton, returnButton;
-	/**	 */
+	/**	Nouvelle Fenêtre pour afficher les options de chargement d'une partie */
 	private JFrame loadGameFrame = new JFrame();
-	/**	 */
+	/**	Nouveau layout pour la disposition des éléments. */
 	private JPanel loadGamePanel = new JPanel();
-	
+	/** Case à cocher correspondant aux choix de l'emplacement de sauvegardes.	 */
 	private JRadioButton save1Radio, save2Radio, save3Radio;
-	
+	/** Empeche de choisir plusieurs emplacement de sauvegarde en même temps.	 */
 	private ButtonGroup saveChoice;
-	
+	/** Verification de L'OS sur lequel le jeux est lancé. */
 	private static String OS = System.getProperty("os.name").toLowerCase();
-	
+	/** Correction de la taille de la fenêtre. */
 	private int windowSizeCorrection = 0;
 	
+	/**	 
+	 * Constructeur de l'objet LoadGameMenu
+	 */
 	public LoadGameMenu() {
 		
 		if(isWindows()) {
@@ -95,6 +105,11 @@ public class LoadGameMenu {
 		
 	}
 	
+	/**
+	 * Vérifie l'OS sur lequel est lancé le jeu.
+	 * @return
+	 * 		True si on est sur windows , false sinon.
+	 */
 	public static boolean isWindows() {
 
 		return (OS.indexOf("win") >= 0);

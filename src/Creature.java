@@ -1,7 +1,9 @@
 /**
- * 
- * @author TORO DAPP
+ * La classe qui gére le tamagotchi, 
+ * ses caractéristiques et
+ * ses fonctions vitale.
  *
+ * @author TORO DAPP BOUCHER
  */
 public class Creature {
 	/** Le nom du tamagochi. */

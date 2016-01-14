@@ -12,9 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * La classe qui va gérer la boucle du jeu
+ * et qui donc met en relation l'environnement et le tamagotchi 
+ * en appliquant les contraintes de l'environnement sur le tamagotchi.
  * 
- * @author TORO DAPP
- * 
+ * @author TORO DAPP BOUCHER
  * 
  *
  */

@@ -1,6 +1,8 @@
 /**
+ * La classe qui va gérer les variables lié à l'environnement du tamagotchi, 
+ * donc tout ce qui correspond à la vitesse de décrémentation de ses jauges.
  * 
- * @author TORO DAPP
+ * @author TORO DAPP BOUCHER
  *
  */
 public class Environment {

@@ -5,20 +5,26 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
+/**
+ * La classe qui gére l'interface utilisateur 
+ * de la fenêtre d'accueil de l'application.
+ * @author TORO DAPP BOUCHER
+ *
+ */
 public class Menu {
-	/**	 */
+	/**	Bouton pour lancer une nouvelle partie, en charger une ou quitter l'application. */
 	private JButton newGameButton, loadButton, exitButton;
-	/**	 */
+	/**	Nouvelle fenêtre pour l'affichage du menu d'accueil */
 	private JFrame menuFrame = new JFrame();
-	/**	 */
+	/**	 Nouveau layout pour la disposition des éléments*/
 	private JPanel menuPanel = new JPanel();
-	/**	 */
+	/**	 Vérification de L'OS sur lequel le jeux est lancé.*/
 	private static String OS = System.getProperty("os.name").toLowerCase();
-	/**	 */
+	/**	Correction de la taille de la fenêtre. */
 	private int windowSizeCorrection = 0;
+	
 	/**	 
-	 * 
+	 * Constructeur d'objet de la classe Menu.
 	 */
 	public Menu() {
 		
@@ -76,7 +82,9 @@ public class Menu {
 	}
 	
 	/**	
-	 * 
+	 * Vérifie l'OS sur lequel est lancé le jeu.
+	 * @return
+	 * 		True si on est sur windows , false sinon.
 	 */
 	public static boolean isWindows() {
 
