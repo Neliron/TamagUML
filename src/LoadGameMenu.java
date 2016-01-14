@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 
 public class LoadGameMenu {
@@ -21,10 +20,18 @@ public class LoadGameMenu {
 	
 	private ButtonGroup saveChoice;
 	
+	private static String OS = System.getProperty("os.name").toLowerCase();
+	
+	private int windowSizeCorrection = 0;
+	
 	public LoadGameMenu() {
 		
+		if(isWindows()) {
+			this.windowSizeCorrection = 30;
+		}
+		
 		this.loadGameFrame.setTitle("Tamagotchi");
-	    this.loadGameFrame.setSize(330, 160);
+	    this.loadGameFrame.setSize(330, 160+windowSizeCorrection);
 	    this.loadGameFrame.setLocationRelativeTo(null);
 	    this.loadGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.loadGameFrame.setResizable(false);
@@ -86,6 +93,12 @@ public class LoadGameMenu {
 			}
 	    });
 		
+	}
+	
+	public static boolean isWindows() {
+
+		return (OS.indexOf("win") >= 0);
+
 	}
 	
 }

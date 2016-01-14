@@ -3,7 +3,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -15,10 +14,18 @@ public class Menu {
 	/**	 */
 	private JPanel menuPanel = new JPanel();
 	
+	private static String OS = System.getProperty("os.name").toLowerCase();
+	
+	private int windowSizeCorrection = 0;
+	
 	public Menu() {
 		
+		if(isWindows()) {
+			this.windowSizeCorrection = 30;
+		}
+		
 		this.menuFrame.setTitle("Tamagotchi");
-	    this.menuFrame.setSize(220, 220);
+	    this.menuFrame.setSize(220, 220+windowSizeCorrection);
 	    this.menuFrame.setLocationRelativeTo(null);
 	    this.menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.menuFrame.setResizable(false);
@@ -64,6 +71,12 @@ public class Menu {
 			}
 	    });
 		
+	}
+	
+	public static boolean isWindows() {
+
+		return (OS.indexOf("win") >= 0);
+
 	}
 	
 }

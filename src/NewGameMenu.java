@@ -23,10 +23,18 @@ public class NewGameMenu {
 	
 	private JTextField nameField;
 	
+	private static String OS = System.getProperty("os.name").toLowerCase();
+	
+	private int windowSizeCorrection = 0;
+	
 	public NewGameMenu() {
 		
+		if(isWindows()) {
+			this.windowSizeCorrection = 30;
+		}
+		
 		this.newGameFrame.setTitle("Tamagotchi");
-	    this.newGameFrame.setSize(300, 240);
+	    this.newGameFrame.setSize(300, 240+windowSizeCorrection);
 	    this.newGameFrame.setLocationRelativeTo(null);
 	    this.newGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.newGameFrame.setResizable(false);
@@ -103,6 +111,12 @@ public class NewGameMenu {
 				newGameFrame.dispose();
 			}
 	    });
+	}
+	
+	public static boolean isWindows() {
+
+		return (OS.indexOf("win") >= 0);
+
 	}
 	
 }

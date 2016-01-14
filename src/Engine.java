@@ -1,5 +1,3 @@
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,11 +40,11 @@ public class Engine {
 	public Engine(Creature creature) {
 		
 		if(isWindows()) {
-			//this.windowSizeCorrection = 30;
+			this.windowSizeCorrection = 30;
 		}
-		
 
 	    this.frame.setTitle("Tamagotchi");
+	    this.frame.setSize(800, 640+windowSizeCorrection);
 	    this.frame.setLocationRelativeTo(null);
 	    this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.frame.setResizable(false);
@@ -66,7 +64,7 @@ public class Engine {
 		}
 		
 		
-		this.img.setBounds(0, 0, 300, 300);
+		this.img.setBounds(this.frame.getWidth()/2-this.img.getIcon().getIconWidth()/2, 0, 300, 300);
 		
 		this.hungerText = new JLabel("Hunger : " + pet.getHunger() + " %");
 		this.moraleText = new JLabel("Morale : " + pet.getMorale() + " %");
@@ -74,16 +72,16 @@ public class Engine {
 		this.status = new JLabel(Creature.STATUSNAME[pet.getRaceId()-1][pet.getStatus()]);
 		this.name = new JLabel(pet.getName());
 		
-		this.hungerText.setBounds(10, 520-windowSizeCorrection, 150, 30);
-		this.moraleText.setBounds(10, 560-windowSizeCorrection, 150, 30);
-		this.focusText.setBounds(10, 600-windowSizeCorrection, 150, 30);
+		this.hungerText.setBounds(10, 520, 150, 30);
+		this.moraleText.setBounds(10, 560, 150, 30);
+		this.focusText.setBounds(10, 600, 150, 30);
 		
-		this.status.setBounds(325, 560-windowSizeCorrection, 150, 30);
-		this.name.setBounds(325, 520-windowSizeCorrection, 150, 30);
+		this.status.setBounds(325, 560, 150, 30);
+		this.name.setBounds(325, 520, 150, 30);
 	    
-	    this.feed.setBounds(640, 520-windowSizeCorrection, 150, 30);
-	    this.raiseMorale.setBounds(640, 560-windowSizeCorrection, 150, 30);
-	    this.pray.setBounds(640, 600-windowSizeCorrection, 150, 30);
+	    this.feed.setBounds(640, 520, 150, 30);
+	    this.raiseMorale.setBounds(640, 560, 150, 30);
+	    this.pray.setBounds(640, 600, 150, 30);
 	    
 	    
 	    this.feed.addActionListener(new ActionListener() {
@@ -123,8 +121,6 @@ public class Engine {
 	    this.panel.add(this.status);
 	    
 	    this.frame.setContentPane(this.panel);
-	    
-	    this.frame.setBounds(0, 0, 800, 640);
 	    
 	    this.frame.setVisible(true);
 	}
